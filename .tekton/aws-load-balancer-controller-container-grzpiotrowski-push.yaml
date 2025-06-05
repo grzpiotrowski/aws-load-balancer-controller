@@ -25,7 +25,7 @@ spec:
   - name: output-image
     value: quay.io/redhat-user-workloads/aws-load-balancer-operator-tenant/aws-load-balancer-controller-container-grzpiotrowski:{{revision}}
   - name: dockerfile
-    value: Dockerfile
+    value: Dockerfile.openshift
   pipelineSpec:
     description: |
       This pipeline is ideal for building container images from a Containerfile while maintaining trust after pipeline customization.
