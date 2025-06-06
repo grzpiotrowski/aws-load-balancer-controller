@@ -1,6 +1,8 @@
 # syntax=docker/dockerfile:experimental
 ARG BASE_IMAGE
 ARG BUILD_IMAGE
+ARG TARGETOS
+ARG TARGETARCH
 
 FROM --platform=${TARGETPLATFORM} $BUILD_IMAGE AS base
 WORKDIR /workspace
@@ -13,8 +15,7 @@ RUN --mount=type=bind,target=. \
     GOPROXY=direct go mod download
 
 FROM base AS build
-ARG TARGETOS
-ARG TARGETARCH
+
 ENV VERSION_PKG=sigs.k8s.io/aws-load-balancer-controller/pkg/version
 RUN --mount=type=bind,target=. \
     --mount=type=cache,target=/root/.cache/go-build \
