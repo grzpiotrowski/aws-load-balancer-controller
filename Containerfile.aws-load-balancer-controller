@@ -25,7 +25,7 @@ COPY . .
 # Build
 RUN go build -tags strictfipsruntime -o controller -mod=vendor main.go
 
-FROM registry.access.redhat.com/ubi8/ubi:8.10-1184.1741863532
+FROM registry.access.redhat.com/ubi8/ubi:8.10-1304.1749680715
 LABEL maintainer="Red Hat, Inc."
 LABEL com.redhat.component="aws-load-balancer-controller-container"
 LABEL name="aws-load-balancer-controller"
