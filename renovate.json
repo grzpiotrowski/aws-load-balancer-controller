@@ -1,5 +1,35 @@
 {
-  "gomod": {
-    "enabled": false
-  }
-}
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "packageRules": [
+    {
+      "description": "Only update Go modules for CVE fixes",
+      "matchManagers": ["gomod"],
+      "vulnerabilityAlerts": {
+        "enabled": true
+      },
+      "automerge": false
+    },
+    {
+      "description": "Keep RHEL UBI on major version 9 only",
+      "matchDatasources": ["docker"],
+      "matchPackageNames": [
+        "registry.access.redhat.com/ubi9/ubi-minimal",
+        "registry.access.redhat.com/ubi9/ubi"
+      ],
+      "allowedVersions": "/^9\\./"
+    },
+    {
+      "description": "Keep Go toolset on minor version 1.22 only",
+      "matchDatasources": ["docker"],
+      "matchPackageNames": [
+        "registry.access.redhat.com/ubi9/go-toolset"
+      ],
+      "allowedVersions": "/^1\\.22/"
+    }
+  ],
+  "vulnerabilityAlerts": {
+    "enabled": true
+  },
+  "osvVulnerabilityAlerts": true,
+  "schedule": ["before 6am on monday"]
+} 
